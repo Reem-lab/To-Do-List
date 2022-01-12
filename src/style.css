@@ -1,6 +1,6 @@
 body {
-  color: rgb(90, 5, 5);
-  background-color: gray
+  color: rgb(90 5 5);
+  background-color: gray;
 }
 
 .list-items {
@@ -10,7 +10,7 @@ body {
   border: 2px solid black;
 }
 
-.toDo {
+.to-do {
   font-size: 40px;
 }
 
@@ -21,11 +21,10 @@ body {
 }
 
 .list-item {
-   padding: 30px;
+  padding: 30px;
 }
 
 .task-div {
   background-color: green;
   margin: 20px;
 }
-
