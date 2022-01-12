@@ -22,7 +22,7 @@ const task3 = {
 
 const lists = [task1, task2, task3];
 
-const displayTasks = function (lists) {
+function displayTasks(lists) {
   lists.forEach((list) => {
     const html = ` <div class"task-div"> <input type="checkbox" name="task" value="task">
        <label class="list-item" for="task${list.index}"> ${list.description}</label><br>
@@ -30,6 +30,6 @@ const displayTasks = function (lists) {
 
     listContainer.insertAdjacentHTML('beforeend', html);
   });
-};
+}
 
 displayTasks(lists);
