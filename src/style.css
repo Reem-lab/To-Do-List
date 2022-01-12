@@ -1,0 +1,30 @@
+body {
+  color: rgb(90 5 5);
+  background-color: gray;
+}
+
+.list-items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid black;
+}
+
+.to-do {
+  font-size: 40px;
+}
+
+.input-list,
+.deletebtn {
+  margin: 30px;
+  padding-left: 20px;
+}
+
+.list-item {
+  padding: 30px;
+}
+
+.task-div {
+  background-color: green;
+  margin: 20px;
+}
