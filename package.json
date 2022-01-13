@@ -1,5 +1,4 @@
 {
-  "name": "webpacksetup",
   "version": "1.0.0",
   "description": "",
   "private": true,
@@ -17,14 +16,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Reem-lab/WebpackSetUp.git"
+    "url": ""
   },
-  "author": "",
-  "license": "ISC",
+  "keywords": [],
+  "author": "reem",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Reem-lab/WebpackSetUp/issues"
+    "url": ""
   },
-  "homepage": "https://github.com/Reem-lab/WebpackSetUp#readme",
+  "homepage": "",
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "css-loader": "^6.5.1",

@@ -1,3 +1,7 @@
+*{
+  box-sizing: border-box;
+}
+
 body {
   color: rgb(90 5 5);
   background-color: gray;
@@ -7,7 +11,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 2px solid black;
+  /* border: 2px solid black; */
 }
 
 .to-do {
@@ -16,15 +20,44 @@ body {
 
 .input-list,
 .deletebtn {
-  margin: 30px;
-  padding-left: 20px;
+  width: 300px;
+  outline: none;
+  padding: 5px;
 }
 
 .list-item {
-  padding: 30px;
+  padding: 0px;
+  max-width: 100px;
 }
 
-.task-div {
-  background-color: green;
-  margin: 20px;
+.list-container {
+   width: 300px;
+   display: flex;
+   flex-direction: column;
+   background-color: white;
+
+}
+
+
+.btn-remove {
+  cursor: pointer;
+}
+
+.wrap-tasks {
+  display: flex;
+  gap: 120px;
+  justify-content: space-between;
+  padding: 5px;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.task-div { 
+  display: flex;
+
+}
+
+
+
+.dots-img {
+   padding-left: 20px;
 }

@@ -70,31 +70,33 @@
 
 // const list = new List();
 
-import './style.css';
+// import './style.css';
 
-const listContainer = document.querySelector('.list-container');
+// const listContainer = document.querySelector('.list-container');
 
-const lists = [];
-function displayTasks(lists) {
-  lists.forEach((list) => {
-    const html = ` <div class"task-div"> <input type="checkbox" name="task" value="task">
-       <label class="list-item" for="task${list.index}"> ${list.description}</label><br>
-      </div>`;
+// const lists = [];
 
-    listContainer.insertAdjacentHTML('beforeend', html);
-  });
-}
+// const displayTasks = (lists) => {
+//   lists.forEach((list, index) => {
+//     const html = ` <div class"task-div"> <input type="checkbox" name="task" value="task">
+//        <label class="list-item" for="task${index}"> ${list}</label><br>
+//       </div>`;
 
+//     listContainer.insertAdjacentHTML('beforeend', html);
+//   });
+// }
 
-const input = document.querySelector('.input-list');
+// const input = document.querySelector('.input-list');
 
-input.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') {
-     lists.push(input.value);
-     displayTasks(lists);
-    input.value = ' ';
-  }
-});
+// input.addEventListener('keydown', (e) => {
+ 
+//   if (e.key === 'Enter') {
+//     console.log('cliced');
+//     lists.push(input.value);
+//     displayTasks(lists);
+//     input.value = ' ';
+//   }
+// });
 
 // document.addEventListener('DOMContentLoaded', () => {
 //   if (localStorage.getItem('lists') !== null) {
