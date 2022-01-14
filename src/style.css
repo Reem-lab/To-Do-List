@@ -1,4 +1,4 @@
-*{
+* {
   box-sizing: border-box;
 }
 
@@ -11,6 +11,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+
   /* border: 2px solid black; */
 }
 
@@ -20,24 +21,24 @@ body {
 
 .input-list,
 .deletebtn {
-  width: 300px;
+  width: 500px;
   outline: none;
   padding: 5px;
 }
 
 .list-item {
-  padding: 0px;
-  max-width: 100px;
+  padding: 0;
+  width: 300px;
+  border: none;
+  outline: none;
 }
 
 .list-container {
-   width: 300px;
-   display: flex;
-   flex-direction: column;
-   background-color: white;
-
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  width: 500px;
 }
-
 
 .btn-remove {
   cursor: pointer;
@@ -48,16 +49,15 @@ body {
   gap: 120px;
   justify-content: space-between;
   padding: 5px;
-  border-bottom: 1px solid rgba(0,0,0,0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  width: 100%;
 }
 
-.task-div { 
+.task-div {
   display: flex;
-
+  width: 100%;
 }
-
-
 
 .dots-img {
-   padding-left: 20px;
+  padding-left: 20px;
 }
