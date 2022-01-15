@@ -1,4 +1,4 @@
-/* eslint-disable eqeqeq */
+/* eslint-disable no-use-before-define */
 import './style.css';
 
 const input = document.querySelector('.input-list');
@@ -15,12 +15,10 @@ if (localStorage.getItem('tasks')) {
 }
 
 // trigger data from local storage
-// eslint-disable-next-line no-use-before-define
 getDataFromLocal();
 
 // submit tasks
 submit.onclick = () => {
-  // eslint-disable-next-line no-use-before-define
   if (input !== ' ') addTaskToArray(input.value); // Add task to array
   input.value = ' '; // empty the input
 };
@@ -30,7 +28,6 @@ tasksDiv.addEventListener('click', (e) => {
   // remove from page
   if (e.target.classList.contains('del')) {
     // remove from local
-    // eslint-disable-next-line no-use-before-define
     deleteTaskWith(e.target.parentElement.getAttribute('data-id'));
     // remove from page
     e.target.parentElement.remove();
@@ -39,7 +36,6 @@ tasksDiv.addEventListener('click', (e) => {
   // task element and update
   if (e.target.classList.contains('checked')) {
     // toggele completed for the task
-    // eslint-disable-next-line no-use-before-define
     toggleStatusTask(e.target.parentElement.getAttribute('data-id')); // here we don't call parent because we are on it
     // toggle done class
     e.target.classList.toggle('done');
@@ -57,11 +53,9 @@ function addTaskToArray(taskText) {
   arrayOfTasks.push(task);
 
   // Add elemnt to my page
-  // eslint-disable-next-line no-use-before-define
   addElementsToPageFrom(arrayOfTasks);
 
   // add to local storage
-  // eslint-disable-next-line no-use-before-define
   addDataToLocal(arrayOfTasks);
 }
 
@@ -81,7 +75,6 @@ function addElementsToPageFrom(arrayOfTasks) {
       div.className = 'task done';
     }
     div.setAttribute('data-id', task.id);
-    // div.appendChild(document.createTextNode(task.title));
 
     // create checkbox
     const checkbox = document.createElement('input');
@@ -105,7 +98,6 @@ function addElementsToPageFrom(arrayOfTasks) {
 
     desc.addEventListener('change', (e) => {
       task.title = e.target.value;
-      // eslint-disable-next-line no-use-before-define
       addDataToLocal(arrayOfTasks);
     });
 
@@ -139,7 +131,7 @@ function toggleStatusTask(taskId) {
     // eslint-disable-next-line eqeqeq
     if (arrayOfTasks[i].id == taskId) {
       // eslint-disable-next-line no-unused-expressions
-      arrayOfTasks[i].completed == false
+      arrayOfTasks[i].completed === false
         ? (arrayOfTasks[i].completed = true)
         : (arrayOfTasks[i].completed = false);
     }
@@ -148,10 +140,7 @@ function toggleStatusTask(taskId) {
 }
 
 deletebtn.addEventListener('click', () => {
-  // tasksDiv.innerHTML = " ";
-  // eslint-disable-next-line no-use-before-define
   deleteTasks();
-  //  tasksDiv.innerHTML = " ";
   addElementsToPageFrom(arrayOfTasks);
 });
 
