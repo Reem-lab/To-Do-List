@@ -1,35 +1,162 @@
+/* eslint-disable eqeqeq */
 import './style.css';
 
-const listContainer = document.querySelector('.list-container');
+const input = document.querySelector('.input-list');
+const submit = document.querySelector('.add');
+const tasksDiv = document.querySelector('.tasks');
+const deletebtn = document.querySelector('.deletebtn');
 
-const task1 = {
-  description: 'Fix my car',
-  completed: true,
-  index: 1,
+// empty array
+let arrayOfTasks = [];
+
+// ckeck if there is any thing in local storage
+if (localStorage.getItem('tasks')) {
+  arrayOfTasks = JSON.parse(localStorage.getItem('tasks'));
+}
+
+// trigger data from local storage
+// eslint-disable-next-line no-use-before-define
+getDataFromLocal();
+
+// submit tasks
+submit.onclick = () => {
+  // eslint-disable-next-line no-use-before-define
+  if (input !== ' ') addTaskToArray(input.value); // Add task to array
+  input.value = ' '; // empty the input
 };
 
-const task2 = {
-  description: 'Watch series',
-  completed: false,
-  index: 2,
-};
+// click on task elemnt to delete
+tasksDiv.addEventListener('click', (e) => {
+  // remove from page
+  if (e.target.classList.contains('del')) {
+    // remove from local
+    // eslint-disable-next-line no-use-before-define
+    deleteTaskWith(e.target.parentElement.getAttribute('data-id'));
+    // remove from page
+    e.target.parentElement.remove();
+  }
 
-const task3 = {
-  description: 'Read articles',
-  completed: false,
-  index: 3,
-};
+  // task element and update
+  if (e.target.classList.contains('checked')) {
+    // toggele completed for the task
+    // eslint-disable-next-line no-use-before-define
+    toggleStatusTask(e.target.parentElement.getAttribute('data-id')); // here we don't call parent because we are on it
+    // toggle done class
+    e.target.classList.toggle('done');
+  }
+});
 
-const lists = [task1, task2, task3];
+function addTaskToArray(taskText) {
+  const task = {
+    id: Date.now(), // make it quall to time to be different
+    title: taskText,
+    completed: false,
+    index: arrayOfTasks.length,
+  };
+  // push my tasks to array
+  arrayOfTasks.push(task);
 
-const displayTasks = (lists) => {
-  lists.forEach((list) => {
-    const html = ` <div class"task-div"> <input type="checkbox" name="task" value="task">
-       <label class="list-item" for="task${list.index}"> ${list.description}</label><br>
-      </div>`;
+  // Add elemnt to my page
+  // eslint-disable-next-line no-use-before-define
+  addElementsToPageFrom(arrayOfTasks);
 
-    listContainer.insertAdjacentHTML('beforeend', html);
+  // add to local storage
+  // eslint-disable-next-line no-use-before-define
+  addDataToLocal(arrayOfTasks);
+}
+
+function addElementsToPageFrom(arrayOfTasks) {
+  // empty task div if has any data
+  tasksDiv.innerHTML = ' ';
+
+  // looping arryof tasks
+
+  arrayOfTasks.forEach((task) => {
+    // create main div
+    const div = document.createElement('div');
+    div.className = 'task';
+
+    // check if task id done
+    if (task.completed) {
+      div.className = 'task done';
+    }
+    div.setAttribute('data-id', task.id);
+    // div.appendChild(document.createTextNode(task.title));
+
+    // create checkbox
+    const checkbox = document.createElement('input');
+    checkbox.setAttribute('type', 'checkbox');
+    checkbox.className = 'checked';
+    checkbox.appendChild(document.createTextNode(''));
+    div.appendChild(checkbox);
+
+    // create input description
+    const desc = document.createElement('input');
+    desc.setAttribute('value', task.title);
+    desc.className = 'desc';
+    div.appendChild(desc);
+
+    // create delete span
+    const span = document.createElement('span');
+    span.className = 'del';
+    span.appendChild(document.createTextNode('Delete'));
+    // append button to div
+    div.appendChild(span);
+
+    desc.addEventListener('change', (e) => {
+      task.title = e.target.value;
+      // eslint-disable-next-line no-use-before-define
+      addDataToLocal(arrayOfTasks);
+    });
+
+    // add div to container
+    tasksDiv.appendChild(div);
   });
-};
+}
 
-displayTasks(lists);
+function addDataToLocal(arrayOfTasks) {
+  window.localStorage.setItem('tasks', JSON.stringify(arrayOfTasks));
+}
+
+function getDataFromLocal() {
+  const data = window.localStorage.getItem('tasks');
+  if (data) {
+    const tasks = JSON.parse(data); // convert into an object
+    addElementsToPageFrom(tasks);
+  }
+}
+
+function deleteTaskWith(taskId) {
+  // filter //taskId = e.target.parentelemnt.getAttribute(data-id);
+  // eslint-disable-next-line eqeqeq
+  arrayOfTasks = arrayOfTasks.filter((task) => task.id != taskId);
+  addDataToLocal(arrayOfTasks);
+}
+
+function toggleStatusTask(taskId) {
+  for (let i = 0; i < arrayOfTasks.length; i += 1) {
+    // eslint-disable-next-line eqeqeq
+    if (arrayOfTasks[i].id == taskId) {
+      // eslint-disable-next-line no-unused-expressions
+      arrayOfTasks[i].completed == false
+        ? (arrayOfTasks[i].completed = true)
+        : (arrayOfTasks[i].completed = false);
+    }
+  }
+  addDataToLocal(arrayOfTasks);
+}
+
+deletebtn.addEventListener('click', () => {
+  // tasksDiv.innerHTML = " ";
+  // eslint-disable-next-line no-use-before-define
+  deleteTasks();
+  //  tasksDiv.innerHTML = " ";
+  addElementsToPageFrom(arrayOfTasks);
+});
+
+function deleteTasks() {
+  const arrayOfTasks1 = arrayOfTasks.filter((task) => task.completed);
+  arrayOfTasks1.forEach((task) => {
+    deleteTaskWith(task.id);
+  });
+}

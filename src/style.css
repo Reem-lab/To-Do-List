@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   color: rgb(90 5 5);
   background-color: gray;
@@ -7,24 +11,129 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 2px solid black;
+
+  /* border: 2px solid black; */
 }
 
 .to-do {
   font-size: 40px;
 }
 
+.desc {
+  width: 300px;
+  border: none;
+  outline: none;
+}
+
+.checked {
+  background-color: yellow;
+}
+
+.task .done {
+  opacity: 0.5;
+}
+
+.input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  flex: 1;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.add {
+  border: none;
+  background-color: #f44336;
+  color: white;
+  padding: 10px;
+  border-radius: 6px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.tasks {
+  background-color: #eee;
+  margin-top: 20px;
+  border-radius: 6px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+}
+
+.tasks .task {
+  background-color: white;
+  padding: 10px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.3s;
+  cursor: pointer;
+  border: 1px solid #ccc;
+}
+
+.tasks .task:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.tasks .task:hover {
+  background-color: #f7f7f7;
+}
+
+.tasks .task.done {
+  opacity: 0.5;
+}
+
+.tasks .task span {
+  font-weight: bold;
+  font-size: 10px;
+  background-color: red;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
 .input-list,
 .deletebtn {
-  margin: 30px;
-  padding-left: 20px;
+  width: 500px;
+  outline: none;
+  padding: 5px;
 }
 
 .list-item {
-  padding: 30px;
+  padding: 0;
+  width: 300px;
+  border: none;
+  outline: none;
+}
+
+.btn-remove {
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.wrap-tasks {
+  display: flex;
+  gap: 120px;
+  justify-content: space-between;
+  padding: 5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  width: 100%;
 }
 
 .task-div {
-  background-color: green;
-  margin: 20px;
+  display: flex;
+  width: 100%;
+}
+
+.dots-img {
+  padding-left: 20px;
 }
