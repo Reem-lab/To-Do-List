@@ -114,6 +114,7 @@ function addElementsToPageFrom(arrayOfTasks) {
   });
 }
 
+// function to add data on local storage
 function addDataToLocal(arrayOfTasks) {
   window.localStorage.setItem('tasks', JSON.stringify(arrayOfTasks));
 }
