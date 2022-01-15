@@ -7,8 +7,7 @@
 > .This project is just to Do list that you can add list of some tasks that you want to do it, So you can remeber it 
 and you can remove what you already did.
 
-
-<!-- <img src="images/Mobile.PNG" width="30%" /><img src="images/desktop.PNG" width="70%" /> -->
+<img src="Capture.PNG" width="70%" />
 
 ## Built With
 
