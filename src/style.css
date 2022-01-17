@@ -19,6 +19,75 @@ body {
   font-size: 40px;
 }
 
+.desc {
+  width: 300px;
+  border: none;
+  outline: none;
+}
+
+.checked {
+  background-color: yellow;
+}
+
+.task .done {
+  opacity: 0.5;
+}
+
+.input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  flex: 1;
+}
+
+.input:focus {
+  outline: none;
+}
+.add {
+  border: none;
+  background-color: #f44336;
+  color: white;
+  padding: 10px;
+  border-radius: 6px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+.tasks {
+  background-color: #eee;
+  margin-top: 20px;
+  border-radius: 6px;
+  padding: 20px;
+}
+.tasks .task {
+  background-color: white;
+  padding: 10px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.3s;
+  cursor: pointer;
+  border: 1px solid #ccc;
+}
+.tasks .task:not(:last-child) {
+  margin-bottom: 15px;
+}
+.tasks .task:hover {
+  background-color: #f7f7f7;
+}
+.tasks .task.done {
+  opacity: 0.5;
+}
+.tasks .task span {
+  font-weight: bold;
+  font-size: 10px;
+  background-color: red;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
 .input-list,
 .deletebtn {
   width: 500px;
@@ -33,7 +102,7 @@ body {
   outline: none;
 }
 
-.list-container {
+.tasks {
   display: flex;
   flex-direction: column;
   background-color: white;
@@ -42,6 +111,10 @@ body {
 
 .btn-remove {
   cursor: pointer;
+}
+
+.hidden {
+  display: none;
 }
 
 .wrap-tasks {
