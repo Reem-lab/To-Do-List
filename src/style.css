@@ -11,8 +11,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  /* border: 2px solid black; */
 }
 
 .to-do {
@@ -43,6 +41,10 @@ body {
 .input:focus {
   outline: none;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 531f72a59229ae2010bfccc6c2832444b8a1d398
 .add {
   border: none;
   background-color: #f44336;
@@ -52,12 +54,24 @@ body {
   margin-left: 10px;
   cursor: pointer;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 531f72a59229ae2010bfccc6c2832444b8a1d398
 .tasks {
   background-color: #eee;
   margin-top: 20px;
   border-radius: 6px;
   padding: 20px;
+<<<<<<< HEAD
 }
+=======
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+}
+
+>>>>>>> 531f72a59229ae2010bfccc6c2832444b8a1d398
 .tasks .task {
   background-color: white;
   padding: 10px;
@@ -69,6 +83,7 @@ body {
   cursor: pointer;
   border: 1px solid #ccc;
 }
+<<<<<<< HEAD
 .tasks .task:not(:last-child) {
   margin-bottom: 15px;
 }
@@ -78,6 +93,21 @@ body {
 .tasks .task.done {
   opacity: 0.5;
 }
+=======
+
+.tasks .task:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.tasks .task:hover {
+  background-color: #f7f7f7;
+}
+
+.tasks .task.done {
+  opacity: 0.5;
+}
+
+>>>>>>> 531f72a59229ae2010bfccc6c2832444b8a1d398
 .tasks .task span {
   font-weight: bold;
   font-size: 10px;
@@ -102,6 +132,7 @@ body {
   outline: none;
 }
 
+<<<<<<< HEAD
 .tasks {
   display: flex;
   flex-direction: column;
@@ -109,6 +140,8 @@ body {
   width: 500px;
 }
 
+=======
+>>>>>>> 531f72a59229ae2010bfccc6c2832444b8a1d398
 .btn-remove {
   cursor: pointer;
 }
