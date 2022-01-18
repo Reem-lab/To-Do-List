@@ -1,4 +1,3 @@
-/* eslint-disable no-use-before-define */
 import './style.css';
 
 const input = document.querySelector('.input-list');
@@ -14,49 +13,9 @@ if (localStorage.getItem('tasks')) {
   arrayOfTasks = JSON.parse(localStorage.getItem('tasks'));
 }
 
-// trigger data from local storage
-getDataFromLocal();
-
-// submit tasks
-submit.onclick = () => {
-  if (input !== ' ') addTaskToArray(input.value); // Add task to array
-  input.value = ' '; // empty the input
-};
-
-// click on task elemnt to delete
-tasksDiv.addEventListener('click', (e) => {
-  // remove from page
-  if (e.target.classList.contains('del')) {
-    // remove from local
-    deleteTaskWith(e.target.parentElement.getAttribute('data-id'));
-    // remove from page
-    e.target.parentElement.remove();
-  }
-
-  // task element and update
-  if (e.target.classList.contains('checked')) {
-    // toggele completed for the task
-    toggleStatusTask(e.target.parentElement.getAttribute('data-id')); // here we don't call parent because we are on it
-    // toggle done class
-    e.target.classList.toggle('done');
-  }
-});
-
-function addTaskToArray(taskText) {
-  const task = {
-    id: Date.now(), // make it quall to time to be different
-    title: taskText,
-    completed: false,
-    index: arrayOfTasks.length,
-  };
-  // push my tasks to array
-  arrayOfTasks.push(task);
-
-  // Add elemnt to my page
-  addElementsToPageFrom(arrayOfTasks);
-
-  // add to local storage
-  addDataToLocal(arrayOfTasks);
+// function to add data on local storage
+function addDataToLocal(arrayOfTasks) {
+  window.localStorage.setItem('tasks', JSON.stringify(arrayOfTasks));
 }
 
 function addElementsToPageFrom(arrayOfTasks) {
@@ -106,9 +65,21 @@ function addElementsToPageFrom(arrayOfTasks) {
   });
 }
 
-// function to add data on local storage
-function addDataToLocal(arrayOfTasks) {
-  window.localStorage.setItem('tasks', JSON.stringify(arrayOfTasks));
+function addTaskToArray(taskText) {
+  const task = {
+    id: Date.now(), // make it quall to time to be different
+    title: taskText,
+    completed: false,
+    index: arrayOfTasks.length,
+  };
+  // push my tasks to array
+  arrayOfTasks.push(task);
+
+  // Add elemnt to my page
+  addElementsToPageFrom(arrayOfTasks);
+
+  // add to local storage
+  addDataToLocal(arrayOfTasks);
 }
 
 function getDataFromLocal() {
@@ -128,21 +99,12 @@ function deleteTaskWith(taskId) {
 
 function toggleStatusTask(taskId) {
   for (let i = 0; i < arrayOfTasks.length; i += 1) {
-    // eslint-disable-next-line eqeqeq
-    if (arrayOfTasks[i].id == taskId) {
-      // eslint-disable-next-line no-unused-expressions
-      arrayOfTasks[i].completed === false
-        ? (arrayOfTasks[i].completed = true)
-        : (arrayOfTasks[i].completed = false);
+    if (arrayOfTasks[i].id === +taskId) { // +to make it numbers
+      arrayOfTasks[i].completed = !arrayOfTasks[i].completed;
     }
   }
   addDataToLocal(arrayOfTasks);
 }
-
-deletebtn.addEventListener('click', () => {
-  deleteTasks();
-  addElementsToPageFrom(arrayOfTasks);
-});
 
 function deleteTasks() {
   const arrayOfTasks1 = arrayOfTasks.filter((task) => task.completed);
@@ -150,3 +112,36 @@ function deleteTasks() {
     deleteTaskWith(task.id);
   });
 }
+
+deletebtn.addEventListener('click', () => {
+  deleteTasks();
+  addElementsToPageFrom(arrayOfTasks);
+});
+
+// trigger data from local storage
+getDataFromLocal();
+
+// submit tasks
+submit.onclick = () => {
+  if (input !== ' ') addTaskToArray(input.value); // Add task to array
+  input.value = ' '; // empty the input
+};
+
+// click on task elemnt to delete
+tasksDiv.addEventListener('click', (e) => {
+  // remove from page
+  if (e.target.classList.contains('del')) {
+    // remove from local
+    deleteTaskWith(e.target.parentElement.getAttribute('data-id'));
+    // remove from page
+    e.target.parentElement.remove();
+  }
+
+  // task element and update
+  if (e.target.classList.contains('checked')) {
+    // toggele completed for the task
+    toggleStatusTask(e.target.parentElement.getAttribute('data-id')); // here we don't call parent because we are on it
+    // toggle done class
+    e.target.classList.toggle('done');
+  }
+});
