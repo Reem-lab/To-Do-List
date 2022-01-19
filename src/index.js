@@ -143,6 +143,3 @@ tasksDiv.addEventListener('click', (e) => {
     e.target.classList.toggle('done');
   }
 });
-
-exports.addTaskToArray = addTaskToArray;
-exports.deleteTasks = deleteTasks;
