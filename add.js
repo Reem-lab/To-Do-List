@@ -34,6 +34,7 @@ global.window = dom.window;
 
 const arrayOfTasks = [];
 const tasksDiv = global.document.getElementById('task');
+const taskInput = global.document.getElementsByClassName('input-list');
 
 // function to add data on local storage
 function addDataToLocal(arrayOfTasks) {
@@ -85,6 +86,7 @@ function addElementsToPageFrom(arrayOfTasks) {
     // add div to container
     tasksDiv.appendChild(div);
   });
+  return taskInput.value;
 }
 
 function addTaskToArray() {
