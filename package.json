@@ -3,7 +3,7 @@
   "description": "",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "hint": "npx hint .",
     "hintf": "npx hint --fix .",
     "lint": "npx eslint .",
@@ -35,6 +35,7 @@
     "hint": "^6.1.9",
     "html-loader": "^3.1.0",
     "html-webpack-plugin": "^5.5.0",
+    "jest": "^27.4.7",
     "style-loader": "^3.3.1",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^21.0.0",
