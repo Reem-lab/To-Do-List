@@ -1,4 +1,5 @@
 const { globaldocument } = require('./jsdom.js');
+
 const arrayOfTasks = [];
 const tasksDiv = globaldocument.getElementById('task');
 const taskInput = globaldocument.getElementById('input-list');

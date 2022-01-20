@@ -1,5 +1,6 @@
 const { globaldocument } = require('./jsdom.js');
 const { addElementsToPageFrom } = require('./add.js');
+
 describe('Add tasks to list', () => {
   test('Add new task to list', () => {
     const newArray = [];
@@ -21,6 +22,6 @@ describe('Add tasks to list', () => {
       completed: false,
       index: newArray.length,
     });
-    expect(addElementsToPageFrom(newArray)).toBe('');
+    expect(addElementsToPageFrom(newArray)).not.toBe('');
   });
 });
