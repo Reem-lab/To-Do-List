@@ -1,11 +1,9 @@
 const { globaldocument } = require('./jsdom.js');
 
-const del = globaldocument.getElementById('delete');
 const tasksDiv = globaldocument.getElementById('task');
 
 function addDataToLocal(arrayOfTasks) {
   window.localStorage.setItem('tasks', JSON.stringify(arrayOfTasks));
-  // console.log(JSON.parse(window.localStorage.getItem('tasks')));
 }
 
 function addElementsToPageFrom(arrayOfTasks) {
@@ -58,14 +56,5 @@ function deleteTaskWith(taskId) {
   return arrayOfTasks.length;
 }
 
-function deleteTasks() {
-  let arrayOfTasks1 = JSON.parse(window.localStorage.getItem('tasks'));
-  arrayOfTasks1 = arrayOfTasks1.filter((task) => task.completed);
-  arrayOfTasks1.forEach((task) => {
-    deleteTaskWith(task.id);
-  });
-}
-
 exports.deleteTaskWith = deleteTaskWith;
-exports.deleteTasks = deleteTasks;
 exports.addElementsToPageFrom = addElementsToPageFrom;
