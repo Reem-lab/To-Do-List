@@ -1,4 +1,4 @@
-const { globaldocument } = require('./jsdom.js');
+const { globaldocument } = require('../jsdom.js');
 const { addElementsToPageFrom } = require('./add.js');
 
 describe('Add tasks to list', () => {
@@ -22,6 +22,6 @@ describe('Add tasks to list', () => {
       completed: false,
       index: newArray.length,
     });
-    expect(addElementsToPageFrom(newArray)).not.toBe('');
+    expect(addElementsToPageFrom(newArray)).toBe('');
   });
 });

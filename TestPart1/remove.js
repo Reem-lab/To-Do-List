@@ -1,4 +1,4 @@
-const { globaldocument } = require('./jsdom.js');
+const { globaldocument } = require('../jsdom.js');
 
 const tasksDiv = globaldocument.getElementById('task');
 
