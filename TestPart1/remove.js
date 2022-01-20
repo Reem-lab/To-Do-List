@@ -1,12 +1,11 @@
-const { globaldocument } = require('./jsdom.js');
+const { globaldocument } = require('../jsdom.js');
 
-const arrayOfTasks = [];
 const tasksDiv = globaldocument.getElementById('task');
-const taskInput = globaldocument.getElementById('input-list');
-// function to add data on local storage
+
 function addDataToLocal(arrayOfTasks) {
   window.localStorage.setItem('tasks', JSON.stringify(arrayOfTasks));
 }
+
 function addElementsToPageFrom(arrayOfTasks) {
   // empty task div if has any data
   tasksDiv.innerHTML = ' ';
@@ -45,21 +44,17 @@ function addElementsToPageFrom(arrayOfTasks) {
     // add div to container
     tasksDiv.appendChild(div);
   });
-  return taskInput.value;
-}
-function addTaskToArray() {
-  const task = {
-    id: Date.now(), // make it quall to time to be different
-    title: ' ',
-    completed: false,
-    index: arrayOfTasks.length,
-  };
-  // push my tasks to array
-  arrayOfTasks.push(task);
-  // Add elemnt to my page
-  addElementsToPageFrom(arrayOfTasks);
-  // add to local storage
   addDataToLocal(arrayOfTasks);
+  return tasksDiv.childElementCount;
 }
+
+function deleteTaskWith(taskId) {
+  let arrayOfTasks = JSON.parse(window.localStorage.getItem('tasks'));
+  arrayOfTasks = arrayOfTasks.filter((task) => task.id !== +taskId);
+  addDataToLocal(arrayOfTasks);
+  addElementsToPageFrom(arrayOfTasks);
+  return arrayOfTasks.length;
+}
+
+exports.deleteTaskWith = deleteTaskWith;
 exports.addElementsToPageFrom = addElementsToPageFrom;
-exports.addTaskToArray = addTaskToArray;

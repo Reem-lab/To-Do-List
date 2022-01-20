@@ -1,4 +1,4 @@
-const { globaldocument } = require('./jsdom.js');
+const { globaldocument } = require('../jsdom.js');
 
 const tasksDiv = globaldocument.getElementById('task');
 
@@ -56,5 +56,13 @@ function deleteTaskWith(taskId) {
   return arrayOfTasks.length;
 }
 
-exports.deleteTaskWith = deleteTaskWith;
+function deleteTasks() {
+  let arrayOfTasks1 = JSON.parse(window.localStorage.getItem('tasks'));
+  arrayOfTasks1 = arrayOfTasks1.filter((task) => task.completed);
+  arrayOfTasks1.forEach((task) => {
+    deleteTaskWith(task.id);
+  });
+}
+
+exports.deleteTasks = deleteTasks;
 exports.addElementsToPageFrom = addElementsToPageFrom;

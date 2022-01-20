@@ -18,6 +18,12 @@ function addDataToLocal(arrayOfTasks) {
   window.localStorage.setItem('tasks', JSON.stringify(arrayOfTasks));
 }
 
+const desc = document.querySelector('.desc');
+const updateDesc = (task) => {
+  task.title = desc.value;
+  addDataToLocal(arrayOfTasks);
+};
+
 function addElementsToPageFrom(arrayOfTasks) {
   // empty task div if has any data
   tasksDiv.innerHTML = ' ';
@@ -55,10 +61,12 @@ function addElementsToPageFrom(arrayOfTasks) {
     // append button to div
     div.appendChild(span);
 
-    desc.addEventListener('change', (e) => {
-      task.title = e.target.value;
-      addDataToLocal(arrayOfTasks);
-    });
+    desc.addEventListener('change', updateDesc);
+
+    // desc.addEventListener('change', (e) => {
+    //   task.title = e.target.value;
+    //   addDataToLocal(arrayOfTasks);
+    // });
 
     // add div to container
     tasksDiv.appendChild(div);
@@ -81,6 +89,12 @@ function addTaskToArray(taskText) {
   // add to local storage
   addDataToLocal(arrayOfTasks);
 }
+
+// const desc = document.querySelector('.desc');
+// const updateDesc = () => {
+//   addTaskToArray.task.title = desc.value;
+//   addDataToLocal(arrayOfTasks);
+// };
 
 function getDataFromLocal() {
   const data = window.localStorage.getItem('tasks');
