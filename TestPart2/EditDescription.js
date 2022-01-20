@@ -6,6 +6,14 @@ function addDataToLocal(arrayOfTasks) {
   window.localStorage.setItem('tasks', JSON.stringify(arrayOfTasks));
 }
 
+const arrayOfTasks = [];
+const updateDesc = (task) => {
+  const desc = globaldocument.querySelector('#task .desc');
+  task.title = desc.value;
+  addDataToLocal(arrayOfTasks);
+  return task.title;
+};
+
 function addElementsToPageFrom(arrayOfTasks) {
   // empty task div if has any data
   tasksDiv.innerHTML = ' ';
@@ -25,11 +33,13 @@ function addElementsToPageFrom(arrayOfTasks) {
     checkbox.className = 'checked';
     checkbox.appendChild(document.createTextNode(''));
     div.appendChild(checkbox);
+
     // create input description
     const desc = document.createElement('input');
     desc.setAttribute('value', task.title);
     desc.className = 'desc';
     div.appendChild(desc);
+
     // create delete span
     const span = document.createElement('span');
     span.className = 'del';
@@ -37,10 +47,8 @@ function addElementsToPageFrom(arrayOfTasks) {
     span.appendChild(document.createTextNode('Delete'));
     // append button to div
     div.appendChild(span);
-    desc.addEventListener('change', (e) => {
-      task.title = e.target.value;
-      addDataToLocal(arrayOfTasks);
-    });
+
+    desc.addEventListener('change', updateDesc);
     // add div to container
     tasksDiv.appendChild(div);
   });
@@ -48,4 +56,5 @@ function addElementsToPageFrom(arrayOfTasks) {
   return tasksDiv.childElementCount;
 }
 
+exports.updateDesc = updateDesc;
 exports.addElementsToPageFrom = addElementsToPageFrom;
