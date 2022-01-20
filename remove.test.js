@@ -1,5 +1,5 @@
 const { globaldocument } = require('./jsdom.js');
-const { deleteTaskWith, deleteTasks, addElementsToPageFrom } = require('./remove.js');
+const { deleteTaskWith, addElementsToPageFrom } = require('./remove.js');
 
 describe('Delete one task by id from task array, local storage, and DOM', () => {
   // Add some task to delete after
