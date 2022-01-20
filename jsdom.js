@@ -1,4 +1,5 @@
 const jsdom = require('jsdom');
+
 const { JSDOM } = jsdom;
 const dom = new JSDOM(`<!DOCTYPE html>
 <html lang="en">
@@ -28,5 +29,3 @@ const dom = new JSDOM(`<!DOCTYPE html>
 global.document = dom.window.document;
 global.window = dom.window;
 exports.globaldocument = global.document;
-
-
