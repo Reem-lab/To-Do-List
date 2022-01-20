@@ -1,31 +1,26 @@
+const { globaldocument } = require('./jsdom.js');
 const { addElementsToPageFrom } = require('./add.js');
-
 describe('Add tasks to list', () => {
+  test('Add new task to list', () => {
     const newArray = [];
-    beforeEach(() => {
-        //  const newArray = [];
-        global.document.getElementById('task').innerHtml = '';
+    globaldocument.getElementById('input-list').value = 'reemgaby';
+    newArray.push({
+      id: Date.now(),
+      title: 'reemgaby',
+      completed: false,
+      index: newArray.length,
     });
-
-    test('Add new task to list', () => {
-        global.document.getElementsByClassName('input-list').value = 'reemgaby';
-        newArray.push({
-            id: Date.now(),
-            title: 'reemgaby',
-            completed: false,
-            index: newArray.length,
-        });
-        expect(addElementsToPageFrom(newArray)).toBe('reemgaby');
+    expect(addElementsToPageFrom(newArray)).toBe('reemgaby');
+  });
+  test('Adding a empty input === empty string', () => {
+    const newArray = [];
+    globaldocument.getElementById('input-list').value = '';
+    newArray.push({
+      id: Date.now(),
+      title: '',
+      completed: false,
+      index: newArray.length,
     });
-
-    test('Adding a empty input === undefined', () => {
-        global.document.getElementsByClassName('input-list').value = '';
-        newArray.push({
-            id: Date.now(),
-            title: '',
-            completed: false,
-            index: newArray.length,
-        });
-        expect(addElementsToPageFrom(newArray)).toBe(undefined);
-    });
+    expect(addElementsToPageFrom(newArray)).toBe('');
+  });
 });

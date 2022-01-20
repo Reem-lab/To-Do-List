@@ -3,7 +3,7 @@
   "description": "",
   "private": true,
   "scripts": {
-    "test": "jest",
+    "test": "jest --testEnvironment node ",
     "hint": "npx hint .",
     "hintf": "npx hint --fix .",
     "lint": "npx eslint .",
@@ -50,5 +50,9 @@
     "jsdom": "^19.0.0",
     "lodash": "^4.17.21"
   },
-  "main": "webpack.config.js"
+  "main": "webpack.config.js", 
+   "jest": {
+    "verbose": true,
+    "testURL": "http://localhost/"
+   }
 }
