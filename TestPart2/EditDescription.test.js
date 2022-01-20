@@ -1,16 +1,22 @@
 const { globaldocument } = require('../jsdom.js');
-const { addElementsToPageFrom } = require('./ClearAllCompleted.js');
+const { addElementsToPageFrom, updateDesc } = require('./EditDescription.js');
 
-describe('Delete tasks with completed status set in true', () => {
+describe('Update the description of task', () => {
   // Add some task to delete after
   const newArray = [{
     id: Date.now(),
-    title: 'Task number 1',
+    title: 'reemgaby',
     completed: true,
     index: 0,
   }];
 
-  test('Add a valid task to the array DOM', () => {
+  test('Add one task the Dom', () => {
     expect(addElementsToPageFrom(newArray)).toBe(1);
+  });
+
+  test('Update the description of task ', () => {
+    const status = globaldocument.querySelector('#task .desc');
+    status.value = 'reemgabyUpdated';
+    expect(updateDesc(newArray[0])).toBe('reemgabyUpdated');
   });
 });
