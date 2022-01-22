@@ -17,6 +17,8 @@ and you can remove what you already did.
 
 ## Additional tools
  - Google fonts
+ - Webpack 
+ - Jest 
 
  ## Live Demo
 
