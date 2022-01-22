@@ -19,4 +19,12 @@ describe('Update the description of task', () => {
     status.value = 'reemgabyUpdated';
     expect(updateDesc(newArray[0])).toBe('reemgabyUpdated');
   });
+
+  // test('Update the task description', () => {
+  //   const status = globaldocument.querySelector('#task .desc');
+  //   status.value = 'reemgabyupdate';
+  //   globaldocument.querySelector('#task .desc').dispatchEvent(new globalwindow.MouseEvent('change'));
+    // expect(JSON.parse(window.localStorage.getItem('tasks'))[0].title).toBe('reemgabyupdate');
+  // });
+
 });
